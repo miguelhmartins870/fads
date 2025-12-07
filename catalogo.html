@@ -1,0 +1,1337 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Catálogo Completo de Trajes Finos da Fads: Vestidos de Festa, Noivas, Smokings e Ternos. Explore nossa coleção de luxo e adicione seus favoritos." />
+  
+  <link rel="icon" type="image/jpg" href="logo.jpg">
+  
+  <title>Catálogo Completo | Fads Trajes Finos</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    /* TODO: É altamente recomendado mover TODO o CSS para um arquivo style.css externo para melhor organização */
+
+    :root {
+      --primary: #181818;      /* Preto Intenso */
+      --accent: #b8860b;       /* Dourado Sutil (DarkGoldenrod) */
+      --bg-light: #fefefe;     /* Quase branco */
+      --text-muted: #666;
+      --bg-header: rgba(0, 0, 0, 0.9);
+    }
+
+
+    body {
+      background-color: var(--bg-light);
+      color: var(--primary);
+      font-family: 'Lato', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Tipografia de Luxo */
+    h1, h2, h3, h4, h5 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+    }
+
+    /* Títulos com Sutil Sombra Dourada */
+    .section-title {
+      position: relative;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      width: 50px;
+      height: 2px;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--accent);
+    }
+    
+    /* Navbar Aprimorada */
+    .navbar {
+      background: var(--bg-header); /* Fundo preto semitransparente */
+      backdrop-filter: blur(8px);
+      transition: all 0.4s ease;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Linha sutil */
+    }
+    
+    .navbar-logo {
+      height: 60px; /* Tamanho ajustado da logo */
+      width: auto;
+      border-radius: 4px; /* Suavizar o corte da imagem */
+    }
+
+    .nav-link {
+      color: #e9e9e9 !important; /* Texto branco-suave */
+      font-weight: 400;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 1.5px;
+      position: relative;
+      margin: 0 12px;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 1px;
+      bottom: -5px;
+      left: 0;
+      background-color: var(--accent);
+      transition: width 0.3s;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--accent) !important;
+    }
+
+    .nav-link:hover::after, .nav-link.active::after {
+      width: 100%;
+    }
+
+    /* Hero Section - Fundo Elegante */
+    .hero-section {
+      padding: 140px 0 80px; 
+      background: linear-gradient(135deg, #ffffff 50%, #fcfbf8 50%); /* Transição de cor suave */
+      position: relative;
+    }
+
+    @media (max-width: 991px) {
+      .hero-section { background: #fff; padding-top: 120px; }
+    }
+
+    .hero-title {
+      font-size: 4rem;
+      line-height: 1.1;
+      color: var(--primary);
+    }
+    
+    .hero-subtitle {
+      font-weight: 300;
+      font-size: 1.15rem;
+      color: var(--text-muted);
+    }
+
+    /* Botões Personalizados */
+    .btn-custom {
+      background-color: var(--accent);
+      color: var(--primary); /* Texto escuro no dourado */
+      border-radius: 2px;
+      padding: 12px 30px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      transition: all 0.3s;
+      border: 1px solid var(--accent);
+    }
+
+    .btn-custom:hover {
+      background-color: var(--primary);
+      border-color: var(--primary);
+      color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-outline-custom {
+      background: transparent;
+      color: var(--primary);
+      border: 1px solid var(--primary);
+      border-radius: 2px;
+      padding: 12px 30px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      transition: all 0.3s;
+    }
+
+    .btn-outline-custom:hover {
+      background: var(--primary);
+      color: var(--bg-light);
+    }
+
+    /* GALERIA MELHORADA COM OVERLAY DE DETALHES */
+    .gallery-img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      filter: brightness(0.95);
+      display: block;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 4px;
+      position: relative;
+      cursor: pointer; 
+    }
+
+    /* Overlay de Luxo */
+    .item-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px 15px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+      color: white;
+      transform: translateY(100%);
+      transition: transform 0.4s ease;
+      pointer-events: none; /* Ignora cliques no overlay */
+    }
+
+    .gallery-item:hover .item-overlay {
+      transform: translateY(0);
+    }
+
+    .gallery-item:hover .gallery-img {
+      transform: scale(1.05);
+      filter: brightness(1);
+    }
+
+    .item-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 5px;
+    }
+
+    .item-description {
+      font-size: 0.85rem;
+      color: #ccc;
+    }
+
+    /* Contato & Mapa */
+    .contact-wrapper {
+      background: #fff;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+      border-radius: 10px;
+    }
+
+    footer {
+      background: var(--primary); /* Preto profundo */
+      color: #fff;
+      padding: 60px 0 30px;
+      border-top: 5px solid var(--accent);
+    }
+
+    .footer-link {
+      color: #ccc;
+      text-decoration: none;
+      transition: 0.3s;
+      font-size: 0.9rem;
+    }
+    
+    .footer-link:hover { 
+      color: var(--accent); 
+      padding-left: 5px;
+    }
+   
+    .social-icon {
+      color: #ccc;
+      transition: 0.3s;
+    }
+    .social-icon:hover {
+      color: var(--accent) !important;
+      transform: scale(1.1);
+    }
+
+    /* Botão Flutuante do WhatsApp */
+    .whatsapp-float {
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        z-index: 1050; /* Acima de outros elementos */
+        background-color: #25d366; /* Verde WhatsApp */
+        color: white;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        transition: transform 0.3s;
+    }
+
+    .whatsapp-float:hover {
+        transform: scale(1.1);
+        color: white;
+    }
+
+    /* Botão Flutuante Favoritos */
+    .fav-float {
+        position: fixed;
+        bottom: 100px;
+        right: 25px;
+        z-index: 1060;
+        background-color: #fff;
+        color: var(--primary);
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        text-align: center;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.35rem;
+        border: 2px solid rgba(0,0,0,0.06);
+    }
+
+    .fav-float .badge {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.65rem;
+      padding: 4px 6px;
+      border-radius: 999px;
+      border: 2px solid #fff;
+    }
+
+    .fav-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 5;
+      background: rgba(255,255,255,0.95);
+      border: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      cursor: pointer;
+      transition: transform 0.15s, background 0.15s;
+    }
+
+    .fav-btn i {
+      color: #777;
+      font-size: 1.15rem;
+      transition: color 0.15s, transform 0.15s;
+    }
+    .fav-btn:hover { transform: scale(1.03); }
+    .fav-btn.favorited { background: var(--accent); }
+    .fav-btn.favorited i { color: #fff; transform: scale(1.05); }
+
+    /* Modal imagem miniatura */
+    .fav-thumb {
+      width: 72px;
+      height: 72px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 1px solid #eee;
+    }
+    /* Chat widget */
+  .chat-float{ position:fixed; bottom:26px; left:26px; z-index:1100; display:flex; gap:10px; align-items:flex-end; }
+  .chat-button{ width:64px; height:64px; border-radius:50%; border:none; display:flex; align-items:center; justify-content:center; box-shadow:0 8px 30px rgba(0,0,0,0.18); cursor:pointer; background:linear-gradient(180deg,#fff,#f7f7f7); }
+  .chat-panel{ position:fixed; bottom:100px; left:26px; z-index:1100; width:360px; max-width:92vw; background:#fff; border-radius:12px; box-shadow:0 20px 50px rgba(0,0,0,0.2); overflow:hidden; display:none; flex-direction:column; }
+  .chat-header{ background:var(--primary); color:#fff; padding:12px 14px; display:flex; align-items:center; gap:10px; }
+  .chat-body{ padding:12px; height:320px; overflow:auto; background:#fafafa; display:flex; flex-direction:column; gap:10px; }
+  .chat-input{ display:flex; gap:8px; padding:10px; border-top:1px solid #eee; }
+  .chat-msg{ max-width:78%; padding:10px 12px; border-radius:10px; font-size:.95rem; line-height:1.25; }
+  .chat-msg.user{ align-self:flex-end; background:var(--accent); color:#111; border-bottom-right-radius:4px; }
+  .chat-msg.bot{ align-self:flex-start; background:#fff; color:#333; border:1px solid #eee; }
+  .chat-suggestion{ font-size:.85rem; color:var(--primary); background:transparent; border:none; text-decoration:underline; cursor:pointer; padding:3px 6px; }
+
+ /* PRELOADER PREMIUM 2.0 (mantido para a experiência de carregamento) */
+#preloader {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #ffffff, #f8f6f0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  transition: opacity .8s ease, visibility .8s ease;
+}
+
+#preloader.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.preloader-content {
+  text-align: center;
+  animation: preloaderFadeIn 1s ease forwards;
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+.preloader-logo {
+  width: 140px;
+  height: auto;
+  margin-bottom: 25px;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.08));
+  animation: logoFloat 3s ease-in-out infinite;
+}
+
+/* Spinner Premium Duplo */
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid rgba(0,0,0,0.08);
+  border-top-color: var(--accent);
+  border-right-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+  position: relative;
+}
+
+.spinner::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border: 3px solid transparent;
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: spinReverse 1.8s linear infinite;
+}
+
+/* ======================== ANIMAÇÕES ======================== */
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spinReverse {
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes preloaderFadeIn {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Efeito 3D para a galeria */
+.gallery-item {
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  transform-style: preserve-3d;
+}
+
+.gallery-item:hover {
+  transform: translateY(-5px) rotateX(2deg) rotateY(-1deg);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+/* PARALLAX PREMIUM NO HERO (mantido) */
+.hero-section {
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-parallax {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  transform: translateY(0px);
+  transition: transform 0.1s linear;
+  filter: brightness(0.92);
+}
+
+/* Camada de brilho suave */
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 40%);
+  z-index: -1;
+}
+
+  </style>
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+      <img src="logo.jpg" alt="Fads Trajes Finos Logo" class="navbar-logo">
+    </a>
+
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navMenu" class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+        <li class="nav-item"><a class="nav-link active" href="catalogo.html">Catálogo</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#servicos">Serviços</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#diferenciais">Diferenciais</a></li> 
+        <li class="nav-item"><a class="nav-link" href="index.html#contato">Contato</a></li>
+      </ul>
+      <a href="https://wa.me/5519971563938" target="_blank" class="btn btn-custom ms-lg-4 mt-3 mt-lg-0 rounded-0 px-4">
+        <i class="bi bi-whatsapp me-1"></i> AGENDAR VISITA
+      </a>
+    </div>
+  </div>
+</nav>
+
+<section id="catalogo-header" class="hero-section d-flex align-items-center" style="padding-top: 150px; padding-bottom: 60px;">
+  <div class="container">
+    <div class="hero-parallax" style="
+        background-image: url('https://images.unsplash.com/photo-1519708227418-c6fd9324a7db?q=80&w=1600&auto=format&fit=crop'); 
+        filter: brightness(0.75); /* Mais escuro */
+    "></div>
+
+    <div class="row align-items-center">
+      <div class="col-lg-12 text-center" data-aos="fade-up" data-aos-duration="1000">
+        <span class="text-uppercase fw-bold ls-2 mb-3 d-block small text-white" style="letter-spacing: 2px;">Curadoria Fads</span>
+        <h1 class="hero-title mb-4 text-black display-3">Nosso Acervo Completo</h1>
+        <p class="hero-subtitle mb-5 text-black-50 mx-auto" style="max-width: 600px;">
+          Explore a sofisticação da nossa coleção de trajes. Use os filtros e adicione os modelos favoritos para pedir um orçamento rápido via WhatsApp.
+        </p>
+        <a href="#galeria" class="btn btn-custom btn-lg">Explorar Abaixo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="galeria" class="py-5 bg-white">
+  <div class="container py-5">
+    <div class="d-flex justify-content-between align-items-end mb-4 border-bottom pb-3">
+        <div>
+            <h2 class="display-5 section-title mb-3">Modelos em Destaque</h2>
+            <p class="text-muted mb-0 lead">Navegue, filtre e selecione o seu traje ideal.</p>
+        </div>
+        <a href="https://instagram.com/fadstrajes" target="_blank" class="btn btn-link text-dark text-decoration-none fw-bold" style="color: var(--accent) !important;">
+            Ver Mais no Instagram <i class="bi bi-arrow-right-short fs-4 align-middle"></i>
+        </a>
+    </div>
+
+    <div class="text-center mb-5" data-aos="fade-up">
+        <div class="btn-group" role="group" aria-label="Filtro da Coleção">
+            <button type="button" class="btn btn-outline-dark btn-sm active" data-filter="all">Todos</button>
+            <button type="button" class="btn btn-outline-dark btn-sm" data-filter="feminino">Feminino</button>
+            <button type="button" class="btn btn-outline-dark btn-sm" data-filter="masculino">Masculino</button>
+            <button type="button" class="btn btn-outline-dark btn-sm" data-filter="noivas">Noivas</button>
+        </div>
+    </div>
+    
+    <div class="row g-4">
+      <div class="col-md-4 filter-item feminino noivas" data-aos="zoom-in" data-aos-duration="800"
+        data-title="Vestido de Noiva em Renda Francesa"
+        data-description="Renda trabalhada com brilho sutil, decote coração e caimento sereia. Perfeito para casamentos na fazenda ou em salões elegantes.">
+        <div class="gallery-item shadow-sm">
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=600&auto=format&fit=crop" alt="Vestido de Noiva Renda">
+            <div class="item-overlay">
+              <div class="item-title">Renda Francesa</div>
+              <div class="item-description">Sereia, decote coração e aplicações em pérolas.</div>
+            </div>
+        </div>
+      </div>
+      <div class="col-md-4 filter-item masculino" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="800"
+        data-title="Terno Slim Fit Cinza Chumbo"
+        data-description="Terno em lã fria 120s, corte italiano slim fit, cor cinza chumbo. Ideal para padrinhos e eventos formais diurnos.">
+        <div class="gallery-item shadow-sm">
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1594938298603-c8148c47e356?w=600&auto=format&fit=crop" alt="Terno Masculino Cinza Claro">
+            <div class="item-overlay">
+              <div class="item-title">Terno Cinza Chumbo</div>
+              <div class="item-description">Lã Fria, Slim Fit, ideal para padrinhos e eventos diurnos.</div>
+            </div>
+        </div>
+      </div>
+      <div class="col-md-4 filter-item feminino" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="800"
+        data-title="Vestido de Gala Verde Esmeralda"
+        data-description="Tecido em crepe de seda acetinado, modelagem ombro único com fenda lateral. Uma escolha poderosa para festas de formatura ou casamentos luxuosos.">
+        <div class="gallery-item shadow-sm">
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=600&auto=format&fit=crop" alt="Vestido Longo Verde Esmeralda">
+            <div class="item-overlay">
+              <div class="item-title">Verde Esmeralda Ombro Único</div>
+              <div class="item-description">Crepe de Seda, fenda elegante, cor intensa e vibrante.</div>
+            </div>
+        </div>
+      </div>
+      <div class="col-md-4 filter-item masculino" data-aos="zoom-in" data-aos-duration="800"
+        data-title="Smoking Preto Clássico"
+        data-description="Smoking tradicional com lapela em cetim brilhante, tecido em veludo preto. Essencial para noivos e convidados de gala.">
+        <div class="gallery-item shadow-sm">
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&auto=format&fit=crop" alt="Smoking Preto Clássico">
+            <div class="item-overlay">
+              <div class="item-title">Smoking Clássico</div>
+              <div class="item-description">Lapela em cetim preto, corte tradicional. Para festas black-tie.</div>
+            </div>
+        </div>
+      </div>
+      <div class="col-md-4 filter-item feminino" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="800"
+        data-title="Vestido Madrinha Azul Serenity"
+        data-description="Vestido fluido em musseline de seda, com drapeado no busto e saia plissada. Perfeito para cerimônias ao ar livre e paletas suaves.">
+        <div class="gallery-item shadow-sm">
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1585250003058-24363eb626c0?w=600&auto=format&fit=crop" alt="Vestido de Madrinha Azul Serenity">
+            <div class="item-overlay">
+              <div class="item-title">Azul Serenity Fluido</div>
+              <div class="item-description">Musseline de seda, caimento suave e romântico.</div>
+            </div>
+        </div>
+      </div>
+      <div class="col-md-4 filter-item feminino noivas" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="800"
+        data-title="Vestido de Noiva em A-line Romântico"
+        data-description="Modelo A-line com decote V e aplicações de renda floral no busto e na saia. Um clássico atemporal que valoriza todos os tipos de corpo.">
+        <div class="gallery-item shadow-sm">
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1517488732049-56fb9c86b24d?w=600&auto=format&fit=crop" alt="Vestido Renda e Tule de Noiva">
+            <div class="item-overlay">
+              <div class="item-title">A-line com Renda Floral</div>
+              <div class="item-description">Renda e tule, saia volumosa e decote V. Romântico e leve.</div>
+            </div>
+        </div>
+      </div>
+      <div class="col-md-4 filter-item masculino" data-aos="zoom-in" data-aos-duration="800"
+        data-title="Terno Moderno Azul Royal"
+        data-description="Terno em microfibra super 100, corte super slim, cor azul royal vibrante. Ideal para formandos ou casamentos modernos.">
+        <div class="gallery-item shadow-sm">
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1593032463371-5c1280cc029a?w=600&auto=format&fit=crop" alt="Terno Moderno Slim Fit">
+            <div class="item-overlay">
+              <div class="item-title">Azul Royal Super Slim</div>
+              <div class="item-description">Microfibra, corte ajustado. Para um look jovem e ousado.</div>
+            </div>
+        </div>
+      </div>
+      <div class="col-md-4 filter-item feminino" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="800"
+        data-title="Vestido Vermelho de Gala com Brilho"
+        data-description="Vestido sereia em tecido lurex vermelho, com decote profundo e costas nuas. Máximo impacto e glamour para eventos de tapete vermelho.">
+        <div class="gallery-item shadow-sm">
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1629938814741-94924c52f1e2?w=600&auto=format&fit=crop" alt="Vestido Vermelho de Gala">
+            <div class="item-overlay">
+              <div class="item-title">Vermelho Lurex Sereia</div>
+              <div class="item-description">Tecido com brilho, costas nuas. Puro glamour e sensualidade.</div>
+            </div>
+        </div>
+      </div>
+      <div class="col-md-4 filter-item feminino noivas" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="800"
+        data-title="Detalhes: Véu Catedral e Buquê Clássico"
+        data-description="Véu longo estilo catedral em tule italiano e buquê em rosas brancas. O toque final de elegância para a noiva tradicional.">
+        <div class="gallery-item shadow-sm">
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1520853702581-2287b46d0a79?w=600&auto=format&fit=crop" alt="Véu e Buquê de Flores Brancas">
+            <div class="item-overlay">
+              <div class="item-title">Véu Catedral e Buquê</div>
+              <div class="item-description">Acessórios para noivas, em tule italiano e flores naturais.</div>
+            </div>
+        </div>
+      </div>
+      <div class="col-md-4 filter-item masculino" data-aos="zoom-in" data-aos-duration="800"
+        data-title="Acessório: Gravata Borboleta e Suspensório"
+        data-description="Conjunto de gravata borboleta em seda marsala e suspensório em couro marrom. Acessório perfeito para o noivo moderno ou para o padrinho descolado.">
+        <div class="gallery-item shadow-sm">
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1602755255018-9128f74a0050?w=600&auto=format&fit=crop" alt="Gravata Borboleta e Suspensório">
+            <div class="item-overlay">
+              <div class="item-title">Gravata Borboleta Marsala</div>
+              <div class="item-description">Seda premium, ideal para trajes cinzas e azuis.</div>
+            </div>
+        </div>
+      </div>
+      <div class="col-md-4 filter-item feminino" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="800"
+        data-title="Vestido Azul Royal de Cetim"
+        data-description="Vestido em cetim estruturado, modelagem sereia, com decote ombro a ombro e cauda suave. Elegância e conforto em um tom marcante.">
+        <div class="gallery-item shadow-sm">
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1588141527807-6573c988a034?w=600&auto=format&fit=crop" alt="Vestido Azul Royal de Festa">
+            <div class="item-overlay">
+              <div class="item-title">Azul Royal Ombro a Ombro</div>
+              <div class="item-description">Cetim estruturado, caimento sereia, cor viva e luxuosa.</div>
+            </div>
+        </div>
+      </div>
+      <div class="col-md-4 filter-item masculino" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="800"
+        data-title="Detalhes: Abotoadura e Broche"
+        data-description="Detalhe do abotoamento e botões de punho dourados. A atenção aos detalhes que define a alfaiataria de luxo Fads.">
+        <div class="gallery-item shadow-sm">
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1509618175239-26a1b24d9c79?w=600&auto=format&fit=crop" alt="Detalhe Botão Terno">
+            <div class="item-overlay">
+              <div class="item-title">Abotoadura Dourada</div>
+              <div class="item-description">Detalhe em terno preto, abotoadura de luxo.</div>
+            </div>
+        </div>
+      </div>
+       <div class="col-md-4 filter-item feminino noivas" data-aos="zoom-in" data-aos-duration="800"
+        data-title="Vestido de Noiva Minimalista Sereia"
+        data-description="Modelo sereia em crepe liso, com decote canoa e faixa minimalista na cintura. Perfeito para noivas modernas que valorizam a modelagem.">
+        <div class="gallery-item shadow-sm">
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1551046904-71239798517e?w=600&auto=format&fit=crop" alt="Noiva com buquê e coroa">
+            <div class="item-overlay">
+              <div class="item-title">Noiva Crepe Minimalista</div>
+              <div class="item-description">Modelagem impecável em crepe de alta qualidade.</div>
+            </div>
+        </div>
+      </div>
+       <div class="col-md-4 filter-item feminino" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="800"
+        data-title="Vestido de Festa em Tule Rosa Pink"
+        data-description="Vestido em tule ilusione drapeado, com saia em camadas e abertura na lateral. Um toque de cor vibrante para eventos noturnos.">
+        <div class="gallery-item shadow-sm">
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1596766324888-0056911c4224?w=600&auto=format&fit=crop" alt="Vestido Rosa Pink Madrinha">
+            <div class="item-overlay">
+              <div class="item-title">Rosa Pink em Tule</div>
+              <div class="item-description">Tule ilusione, saia em camadas. Look marcante para madrinhas.</div>
+            </div>
+        </div>
+      </div>
+       <div class="col-md-4 filter-item masculino" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="800"
+        data-title="Terno Azul Marinho Clássico"
+        data-description="Terno em pura lã (Super 150s), cor azul marinho escuro. O modelo mais versátil e elegante para qualquer ocasião formal.">
+        <div class="gallery-item shadow-sm">
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1533139502638-2198080d859e?w=600&auto=format&fit=crop" alt="Terno Azul Marinho com Cores Claras">
+            <div class="item-overlay">
+              <div class="item-title">Azul Marinho Pura Lã</div>
+              <div class="item-description">O Clássico atemporal, tecido super 150s. Elegância garantida.</div>
+            </div>
+        </div>
+      </div>
+       <div class="col-md-4 filter-item feminino" data-aos="zoom-in" data-aos-duration="800"
+        data-title="Vestido Curto Preto de Coquetel"
+        data-description="Vestido preto estruturado em jacquard, modelagem trapézio, com cinto de fivela dourada. Ideal para coquetéis e eventos semi-formais.">
+        <div class="gallery-item shadow-sm">
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1616075902167-93d395781a71?w=600&auto=format&fit=crop" alt="Vestido Preto de Festa Curto">
+            <div class="item-overlay">
+              <div class="item-title">Preto Curto em Jacquard</div>
+              <div class="item-description">Modelagem trapézio, elegante e versátil para coquetéis.</div>
+            </div>
+        </div>
+      </div>
+       <div class="col-md-4 filter-item feminino noivas" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="800"
+        data-title="Detalhes: Bordado em Tule Ilusione"
+        data-description="Detalhe do bordado manual em tule ilusione nas costas. O acabamento de alta costura que as noivas buscam.">
+        <div class="gallery-item shadow-sm">
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1556885141-923f059c1181?w=600&auto=format&fit=crop" alt="Detalhe do vestido de noiva decote">
+            <div class="item-overlay">
+              <div class="item-title">Bordado em Tule Ilusione</div>
+              <div class="item-description">Decote V e bordado exclusivo nas costas.</div>
+            </div>
+        </div>
+      </div>
+      <div class="col-md-4 filter-item feminino" data-aos="zoom-in" data-aos-duration="800"
+        data-title="Vestido Longo Dourado com Lantejoulas"
+        data-description="Vestido totalmente bordado com lantejoulas douradas, caimento coluna, com alças finas. O máximo em brilho e sofisticação para a mãe dos noivos.">
+        <div class="gallery-item shadow-sm">
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1588820427878-6202416f40c7?w=600&auto=format&fit=crop" alt="Vestido Dourado com Brilho">
+            <div class="item-overlay">
+              <div class="item-title">Dourado Total Lantejoulas</div>
+              <div class="item-description">Peça inteira bordada, cor vibrante e brilho intenso.</div>
+            </div>
+        </div>
+      </div>
+       <div class="col-md-4 filter-item masculino" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="800"
+        data-title="Terno Xadrez Príncipe de Gales"
+        data-description="Terno em lã fria com estampa Príncipe de Gales. Um clássico da alfaiataria britânica, ideal para um estilo vintage chic.">
+        <div class="gallery-item shadow-sm">
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1582294154109-22a30d8d0c9f?w=600&auto=format&fit=crop" alt="Terno Xadrez Clássico">
+            <div class="item-overlay">
+              <div class="item-title">Xadrez Príncipe de Gales</div>
+              <div class="item-description">Lã fria e estampa clássica. Estilo vintage sofisticado.</div>
+            </div>
+        </div>
+      </div>
+       <div class="col-md-4 filter-item feminino noivas" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="800"
+        data-title="Vestido de Noiva Tule com Cauda"
+        data-description="Vestido em tule com saia em camadas de babados e corpete estruturado. Movimento e volume para um conto de fadas moderno.">
+        <div class="gallery-item shadow-sm">
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1600777413554-47c47d77b85e?w=600&auto=format&fit=crop" alt="Vestido de Noiva Sereia">
+            <div class="item-overlay">
+              <div class="item-title">Noiva Tule e Babados</div>
+              <div class="item-description">Cauda longa, saia volumosa e corpete ajustado.</div>
+            </div>
+        </div>
+      </div>
+       <div class="col-md-4 filter-item feminino" data-aos="zoom-in" data-aos-duration="800"
+        data-title="Vestido Longo Roxo Lavanda"
+        data-description="Vestido em seda pura, modelagem império, com drapeado suave no busto. Leveza e fluidez para eventos de primavera/verão.">
+        <div class="gallery-item shadow-sm">
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1602755519890-449e79878144?w=600&auto=format&fit=crop" alt="Vestido Roxo de Festa">
+            <div class="item-overlay">
+              <div class="item-title">Roxo Lavanda Seda Pura</div>
+              <div class="item-description">Seda com caimento império, leve e confortável.</div>
+            </div>
+        </div>
+      </div>
+       <div class="col-md-4 filter-item masculino" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="800"
+        data-title="Look Masculino Casual Chic"
+        data-description="Combinação de blazer cinza com calça preta e camisa slim fit. Um traje mais versátil para convidados ou ocasiões sociais menos formais.">
+        <div class="gallery-item shadow-sm">
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1517841908493-27c13000b957?w=600&auto=format&fit=crop" alt="Terno Casual">
+            <div class="item-overlay">
+              <div class="item-title">Casual Chic (Blazer e Calça)</div>
+              <div class="item-description">Look completo, versátil para eventos semi-formais.</div>
+            </div>
+        </div>
+      </div>
+      <div class="col-md-4 filter-item masculino feminino noivas" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="800"
+        data-title="Modelo Extra: Consultoria Personalizada"
+        data-description="Nossas consultoras estão prontas para te ajudar a encontrar a peça perfeita, mesmo que ela não esteja nesta prévia online.">
+        <div class="gallery-item bg-dark d-flex align-items-center justify-content-center text-white flex-column" style="height:380px;">
+          <i class="bi bi-stars display-4 mb-3" style="color:var(--accent)"></i>
+          <h3 class="fw-bold h5">Não Achou o Ideal?</h3>
+          <p class="text-secondary">Entre em contato para ver mais opções.</p>
+          <a href="index.html#contato" class="btn btn-custom mt-2">Agendar Prova</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer>
+  <div class="container">
+    <div class="row gy-4">
+      <div class="col-lg-4">
+        <img src="logo.jpg" alt="Logo Fads" style="height: 50px; background-color: #fff; border-radius: 4px;">
+        <p class="text-secondary">Sua escolha de excelência em trajes finos. Elegância e sofisticação em Leme-SP.</p>
+        <div class="d-flex gap-3 mt-3">
+          <a href="https://instagram.com/fadstrajes" target="_blank" class="social-icon fs-5"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="social-icon fs-5"><i class="bi bi-facebook"></i></a>
+          <a href="https://wa.me/5519971563938" target="_blank" class="social-icon fs-5"><i class="bi bi-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <h5 class="fw-bold mb-3 text-uppercase" style="color: var(--accent); letter-spacing: 1px;">Horários de Atendimento</h5>
+        <ul class="list-unstyled text-secondary">
+          <li class="mb-2"><i class="bi bi-clock-fill me-2" style="color: var(--accent); font-size: 0.8rem;"></i> Segunda a Sexta: 09h às 18h</li>
+          <li class="mb-2"><i class="bi bi-clock-fill me-2" style="color: var(--accent); font-size: 0.8rem;"></i> Sábado: 09h às 13h</li>
+          <li><i class="bi bi-slash-circle-fill me-2" style="color: var(--accent); font-size: 0.8rem;"></i> Domingo: Fechado</li>
+        </ul>
+      </div>
+      <div class="col-lg-4">
+        <h5 class="fw-bold mb-3 text-uppercase" style="color: var(--accent); letter-spacing: 1px;">Navegação</h5>
+        <ul class="list-unstyled">
+          <li><a href="index.html" class="footer-link d-block mb-1">Início</a></li>
+          <li><a href="catalogo.html" class="footer-link d-block mb-1">Catálogo Completo</a></li>
+          <li><a href="index.html#servicos" class="footer-link d-block mb-1">Nossos Serviços</a></li>
+          <li><a href="index.html#diferenciais" class="footer-link d-block mb-1">Diferenciais</a></li> 
+          <li><a href="index.html#contato" class="footer-link d-block mb-1">Agendar Visita</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-top border-secondary mt-5 pt-4 text-center text-secondary small">
+      <p class="mb-1">Fads Trajes Finos | CNPJ: 00.000.000/0001-00</p>
+      © 2024. Todos os direitos reservados.
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/5519971563938" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+    <i class="bi bi-whatsapp"></i>
+</a>
+
+<button class="fav-float" id="openFavsBtn" title="Meus favoritos" aria-label="Meus favoritos">
+  <i class="bi bi-heart-fill"></i>
+  <span class="badge" id="favCountBadge" style="display:none;">0</span>
+</button>
+
+<div class="modal fade" id="favsModal" tabindex="-1" aria-labelledby="favsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold" id="favsModalLabel">Seus Favoritos</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+      <div class="modal-body">
+        <div id="favsList" class="d-flex flex-column gap-3">
+          </div>
+        <div id="emptyFavs" class="text-center text-muted py-4" style="display:none;">
+          Nenhum favorito ainda. Clique no <i class="bi bi-heart"></i> nas fotos para adicionar.
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="clearFavsBtn" type="button" class="btn btn-outline-secondary">Limpar favoritos</button>
+        <button id="sendFavsBtn" type="button" class="btn btn-custom">Enviar favoritos no WhatsApp <i class="bi bi-whatsapp ms-2"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="chat-float">
+  <div id="chatPanel" class="chat-panel" role="dialog" aria-label="Assistente Fads">
+    <div class="chat-header">
+      <img src="logo.jpg" alt="Fads" style="height:36px;border-radius:6px;">
+      <div><strong>Assistente Fads</strong><div style="font-size:.8rem; color:#ffdca3;">Tire dúvidas rápidas</div></div>
+    </div>
+    <div id="chatBody" class="chat-body" aria-live="polite"></div>
+    <div class="chat-input">
+      <input id="chatInput" class="form-control form-control-sm" placeholder="Pergunte: ex. 'Qual o prazo de aluguel?'" aria-label="Mensagem">
+      <button id="chatSend" class="btn btn-custom">Enviar</button>
+    </div>
+  </div>
+
+  <button id="openChatBtn" class="chat-button" aria-label="Abrir chat">
+    <i class="bi bi-chat-dots-fill fs-3"></i>
+  </button>
+</div>
+
+<div id="preloader">
+  <div class="preloader-content">
+    <img src="logo.jpg" alt="Fads Trajes Finos" class="preloader-logo">
+    <div class="spinner"></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ 
+    once: true, 
+    offset: 100, 
+    duration: 1000, 
+    disableMutationObserver: true 
+  });
+
+
+  // ---------- Galeria & Filtros (Ajustado para o Catálogo) ----------
+  document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.btn-group button');
+    const galleryItems = document.querySelectorAll('.filter-item'); 
+    
+    // Função para aplicar o filtro
+    function applyFilter(filterValue) {
+        let itemsToShow = 0;
+        
+        galleryItems.forEach(item => {
+            const isCTA = item.querySelector('.btn-custom');
+            
+            // Lógica: Mostrar TUDO se for 'all', ou apenas a categoria + o item CTA (que é multi-categoria)
+            if (filterValue === 'all') {
+                item.style.display = 'block';
+                itemsToShow++;
+            } else {
+                // Se for filtro específico
+                if (item.classList.contains(filterValue) || isCTA) {
+                    item.style.display = 'block';
+                    itemsToShow++;
+                } else {
+                    item.style.display = 'none';
+                }
+            }
+        });
+        
+        if (filterValue === 'all') {
+             // Opcional: Reordenar aleatoriamente no ALL para dar a sensação de novidade
+             const container = document.querySelector('#galeria .row.g-4');
+             const itemsArray = Array.from(galleryItems);
+             const ctaItem = itemsArray.find(it => it.querySelector('.btn-custom'));
+             const imageItems = itemsArray.filter(it => it !== ctaItem);
+
+             // Embaralha as imagens
+             imageItems.sort(() => Math.random() - 0.5);
+
+             // Remonta no DOM: Imagens aleatórias primeiro
+             imageItems.forEach(item => container.appendChild(item));
+             
+             // Garante que o CTA está sempre no final
+             if (ctaItem) container.appendChild(ctaItem);
+        }
+    }
+
+    // Inicialização: Aplica o filtro "Todos" para mostrar tudo ao carregar
+    applyFilter('all');
+    
+    filterButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        // 1. Marcar o botão ativo
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        this.classList.add('active');
+
+        // 2. Obter o valor do filtro
+        const filterValue = this.getAttribute('data-filter');
+        
+        // 3. Aplicar o filtro
+        applyFilter(filterValue);
+        
+        // 4. Força o refresh do AOS para novos elementos
+        AOS.refreshHard();
+      });
+    });
+
+    // ---------- Sistema de Favoritos (Melhorado para incluir o Título) ----------
+    const favKey = 'fads_favorites_v1';
+    let favorites = JSON.parse(localStorage.getItem(favKey) || '[]'); 
+
+    function saveFavs() {
+      localStorage.setItem(favKey, JSON.stringify(favorites));
+      updateFavBadge();
+    }
+
+    function isFavorited(src) {
+      return favorites.some(f => f.src === src);
+    }
+
+    function addFavorite(obj) {
+      if (!isFavorited(obj.src)) {
+        // obj agora inclui src, alt e title (data-title)
+        favorites.push(obj);
+        saveFavs();
+      }
+    }
+
+    function removeFavorite(src) {
+      favorites = favorites.filter(f => f.src !== src);
+      saveFavs();
+    }
+
+    // Adiciona o botão de favorito a cada item de galeria com imagem
+    document.querySelectorAll('.filter-item').forEach(item => {
+      const img = item.querySelector('.gallery-img');
+      if (!img) return; // Não adiciona botão no CTA
+
+      const btn = document.createElement('button');
+      btn.className = 'fav-btn';
+      btn.setAttribute('type','button');
+      btn.setAttribute('aria-label','Adicionar aos favoritos');
+      btn.innerHTML = '<i class="bi bi-heart"></i>';
+
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const src = img.src;
+        const alt = item.getAttribute('data-title') || img.alt || ''; // Usa data-title
+        if (isFavorited(src)) {
+          removeFavorite(src);
+          btn.classList.remove('favorited');
+          btn.innerHTML = '<i class="bi bi-heart"></i>';
+        } else {
+          addFavorite({ src, alt }); // Passa o title/alt
+          btn.classList.add('favorited');
+          btn.innerHTML = '<i class="bi bi-heart-fill"></i>';
+        }
+        renderFavsList(); 
+      });
+
+      if (isFavorited(img.src)) {
+        btn.classList.add('favorited');
+        btn.innerHTML = '<i class="bi bi-heart-fill"></i>';
+      }
+
+      item.style.position = 'relative';
+      item.appendChild(btn);
+    });
+
+    // Modal & Botão flutuante
+    const favCountBadge = document.getElementById('favCountBadge');
+    const openFavsBtn = document.getElementById('openFavsBtn');
+    const favsModal = new bootstrap.Modal(document.getElementById('favsModal'));
+    const favsListEl = document.getElementById('favsList');
+    const emptyFavs = document.getElementById('emptyFavs');
+    const clearFavsBtn = document.getElementById('clearFavsBtn');
+    const sendFavsBtn = document.getElementById('sendFavsBtn');
+
+    function updateFavBadge() {
+      const n = favorites.length;
+      if (n > 0) {
+        favCountBadge.style.display = 'inline-block';
+        favCountBadge.textContent = n;
+      } else {
+        favCountBadge.style.display = 'none';
+      }
+    }
+
+    function renderFavsList() {
+      favsListEl.innerHTML = '';
+      if (favorites.length === 0) {
+        emptyFavs.style.display = 'block';
+        favsListEl.style.display = 'none';
+      } else {
+        emptyFavs.style.display = 'none';
+        favsListEl.style.display = 'flex';
+        favorites.forEach(f => {
+          const row = document.createElement('div');
+          row.className = 'd-flex align-items-center justify-content-between gap-3';
+
+          const left = document.createElement('div');
+          left.className = 'd-flex align-items-center gap-3';
+
+          const img = document.createElement('img');
+          img.src = f.src;
+          img.alt = f.alt || '';
+          img.className = 'fav-thumb';
+
+          const meta = document.createElement('div');
+          // Exibe o título agora
+          meta.innerHTML = `<div class="fw-bold small">${f.alt || 'Modelo sem título'}</div><div class="text-muted small">Clique para ver a imagem completa.</div>`;
+
+          left.appendChild(img);
+          left.appendChild(meta);
+
+          const actions = document.createElement('div');
+          actions.innerHTML = `<button class="btn btn-outline-danger btn-sm me-2 remove-fav-btn">Remover</button>`;
+
+          const removeBtn = actions.querySelector('.remove-fav-btn');
+          removeBtn.addEventListener('click', () => {
+            removeFavorite(f.src);
+            document.querySelectorAll('.gallery-img').forEach(imgEl => {
+              if (imgEl.src === f.src) {
+                const parent = imgEl.closest('.gallery-item');
+                if (parent) {
+                  const b = parent.querySelector('.fav-btn');
+                  if (b) { b.classList.remove('favorited'); b.innerHTML = '<i class="bi bi-heart"></i>'; }
+                }
+              }
+            });
+            renderFavsList();
+          });
+
+          row.appendChild(left);
+          row.appendChild(actions);
+          favsListEl.appendChild(row);
+        });
+      }
+      updateFavBadge();
+    }
+
+    openFavsBtn.addEventListener('click', () => {
+      renderFavsList();
+      favsModal.show();
+    });
+
+    clearFavsBtn.addEventListener('click', () => {
+      if (!confirm('Remover todos os favoritos?')) return;
+      favorites = [];
+      saveFavs();
+      document.querySelectorAll('.fav-btn').forEach(b => { b.classList.remove('favorited'); b.innerHTML = '<i class="bi bi-heart"></i>'; });
+      renderFavsList();
+    });
+
+    sendFavsBtn.addEventListener('click', () => {
+      if (favorites.length === 0) {
+        alert('Você não tem favoritos selecionados.');
+        return;
+      }
+      let texto = '*Olá! Gostaria de agendar prova para os seguintes modelos da Fads Trajes Finos:*%0A%0A';
+      favorites.forEach((f, idx) => {
+        // Agora o 'alt' contém o data-title
+        const nome = f.alt || `Modelo ${idx+1}`; 
+        texto += `*${idx+1}. ${nome}*%0A${f.src}%0A%0A`;
+      });
+      texto += '*Por favor me retorno com disponibilidade para prova. Obrigado(a)!*';
+      const encoded = encodeURIComponent(texto);
+      const waUrl = `https://wa.me/5519971563938?text=${encoded}`;
+
+      window.open(waUrl, '_blank');
+    });
+
+    updateFavBadge();
+    
+
+  }); // fim DOMContentLoaded para galeria
+
+
+  // Marcar link da nav como ativo
+  document.querySelectorAll('.nav-link').forEach(link => {
+    // Se o href for catalogo.html ou index.html, usar apenas a parte principal para comparação
+    const linkHref = link.getAttribute('href').split('#')[0];
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html'; // Pega o nome do arquivo atual
+
+    if (linkHref === currentPath) {
+        link.classList.add('active');
+    } else {
+        link.classList.remove('active');
+    }
+  });
+
+
+/* ----------------------------------------------------------
+   MINI-GPT LOCAL PARA CHAT DO SITE
+   (Copiei todo o bloco do index.html para manter a funcionalidade)
+----------------------------------------------------------- */
+
+(() => {
+  const openChatBtn = document.getElementById('openChatBtn');
+  const chatPanel   = document.getElementById('chatPanel');
+  const chatBody    = document.getElementById('chatBody');
+  const chatInput   = document.getElementById('chatInput');
+  const chatSend    = document.getElementById('chatSend');
+
+  const whatsappURL = "https://wa.me/5519971563938";
+
+  const knowledge = [
+    {
+      title: "Preços",
+      words: ["preço","valor","quanto","custa","aluguel"],
+      answer: "Os valores variam conforme o modelo e o período do aluguel. Se quiser, posso sugerir peças dentro do seu gosto ou abrir o WhatsApp para orçamento imediato."
+    },
+    {
+      title: "Tamanhos & Medidas",
+      words: ["tamanho","medida","numeração","serve","caimento"],
+      answer: "Trabalhamos com PP ao G, além de numerações masculinas 46–54. Também fazemos ajustes sob medida para garantir o caimento ideal."
+    },
+    {
+      title: "Prova & Agendamento",
+      words: ["prova","agendar","agenda","horário","visitar","marcar"],
+      answer: "Você pode agendar sua prova pelo botão AGENDAR. Se preferir, posso abrir o WhatsApp para deixar tudo alinhado com um consultor."
+    },
+    {
+      title: "Coleção & Modelos",
+      words: ["vestido","terno","modelo","peças","coleção","catálogo"],
+      answer: "Temos uma curadoria de modelos exclusivos. Me diga se você procura vestido, terno, festa, noiva ou noivo — eu te passo opções."
+    },
+    {
+      title: "Entrega & Retirada",
+      words: ["entrega","retirada","delivery","enviar","buscar"],
+      answer: "Disponibilizamos retirada na loja e, dependendo da região, entrega. Posso verificar sua localização."
+    },
+    {
+      title: "Tecido & Material",
+      words: ["tecido","material","qualidade","fibra","detalhe"],
+      answer: "Trabalhamos com alfaiataria premium, renda importada, tule francês, crepe acetinado e outros materiais de alta qualidade."
+    },
+    {
+      title: "Pagamento",
+      words: ["pix","cartão","pagar","parcelar","forma","pagamento"],
+      answer: "Aceitamos PIX, cartão, débito, crédito e pagamento na loja. Em alguns casos, é possível parcelar."
+    },
+    {
+      title: "Horário & Atendimento",
+      words: ["abre","fechado","funciona","horário","aberto"],
+      answer: "Atendemos de Segunda a Sexta das 09h às 18h, e sábados das 09h às 13h."
+    }
+  ];
+
+  function similarity(userText, itemWords) {
+    const t = userText.toLowerCase();
+    return itemWords.filter(w => t.includes(w.toLowerCase())).length;
+  }
+
+  let memory = []; 
+
+  function miniGPT(userText) {
+    const scores = knowledge.map(k => ({
+      k,
+      score: similarity(userText, k.words)
+    }));
+
+    scores.sort((a, b) => b.score - a.score);
+
+    const best = scores[0];
+
+    if (best.score === 0) {
+      return `Entendi! Você disse: "${userText}".  
+Posso te ajudar com preços, tamanhos, modelos, agendamento, pagamento, entrega e muito mais.  
+Se quiser, também posso abrir o WhatsApp para atendimento humano.`;
+    }
+
+    const dynamicResponses = [
+      `Sobre ${best.k.title}: ${best.k.answer}`,
+      `Pelo que entendi, você quer saber sobre ${best.k.title}. ${best.k.answer}`,
+      `Boa pergunta! Em relação a ${best.k.title}, ${best.k.answer}`,
+      `${best.k.answer} Caso queira detalhes extras, posso te explicar mais.`
+    ];
+
+    const chosen = dynamicResponses[Math.floor(Math.random() * dynamicResponses.length)];
+
+    memory.push(userText);
+    if (memory.length > 6) memory.shift();
+
+    return chosen;
+  }
+
+  function appendMessage(text, who = 'bot') {
+    const el = document.createElement('div');
+    el.className = 'chat-msg ' + (who === "user" ? "user" : "bot");
+    el.innerHTML = text;
+    el.style.animation = "fadeIn .3s ease";
+    chatBody.appendChild(el);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  function addWAButton() {
+    const div = document.createElement('div');
+    div.innerHTML = `
+      <button class="chat-suggestion"
+        onclick="window.open('${whatsappURL}?text=${encodeURIComponent("Olá, preciso de ajuda!")}','_blank')">
+        Falar com consultor no WhatsApp
+      </button>
+    `;
+    chatBody.appendChild(div);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  function handleUserMessage(text) {
+    appendMessage(text, "user");
+
+    setTimeout(() => {
+      const reply = miniGPT(text);
+      appendMessage(reply, "bot");
+      addWAButton();
+    }, 400 + Math.random() * 350);
+  }
+
+  openChatBtn.addEventListener('click', () => {
+    const isOpen = chatPanel.style.display === "flex";
+    chatPanel.style.display = isOpen ? "none" : "flex";
+    if (!isOpen) chatInput.focus();
+  });
+
+  chatSend.addEventListener('click', () => {
+    const val = chatInput.value.trim();
+    if (!val) return;
+    chatInput.value = "";
+    handleUserMessage(val);
+  });
+
+  chatInput.addEventListener("keydown", e => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      chatSend.click();
+    }
+  });
+
+  setTimeout(() => {
+    appendMessage("Olá! 👋 Sou o Assistente Fads. Posso te ajudar com qualquer dúvida sobre preços, tamanhos, coleções, provas, entrega e muito mais.");
+    addWAButton();
+  }, 700);
+})();
+
+// PRELOADER REMOVE
+window.addEventListener("load", () => {
+  const pre = document.getElementById("preloader");
+  setTimeout(() => {
+    pre.classList.add("fade-out");
+  }, 300); 
+});
+
+// PARALLAX DO HERO – Movimento suave
+window.addEventListener("scroll", () => {
+  const sc = window.scrollY;
+  const parallax = document.querySelector(".hero-parallax");
+  if (parallax) {
+    // Movimento mais sutil no catálogo
+    parallax.style.transform = `translateY(${sc * 0.1}px)`; 
+  }
+});
+
+</script>
+</body>
+</html>
