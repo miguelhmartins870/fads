@@ -223,6 +223,25 @@
       transform: scale(1.05);
       filter: brightness(1);
     }
+    
+    /* NOVO: Testimonials Section */
+    .testimonial-card {
+        background: #fff;
+        border: 1px solid #eee;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        position: relative;
+        text-align: center;
+        height: 100%;
+    }
+
+    .testimonial-card .bi-quote {
+        font-size: 2.5rem;
+        color: var(--accent);
+        margin-bottom: 15px;
+    }
+
 
     /* Contato & Mapa */
     .contact-wrapper {
@@ -323,7 +342,9 @@
       <ul class="navbar-nav ms-auto align-items-center">
         <li class="nav-item"><a class="nav-link active" href="#sobre">Início</a></li>
         <li class="nav-item"><a class="nav-link" href="#servicos">Serviços</a></li>
-        <li class="nav-item"><a class="nav-link" href="#diferenciais">Diferenciais</a></li> <li class="nav-item"><a class="nav-link" href="#galeria">Coleção</a></li>
+        <li class="nav-item"><a class="nav-link" href="#diferenciais">Diferenciais</a></li> 
+        <li class="nav-item"><a class="nav-link" href="#testemunhos">Clientes</a></li> 
+        <li class="nav-item"><a class="nav-link" href="#galeria">Coleção</a></li>
         <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
       </ul>
       <a href="https://wa.me/5519971563938" target="_blank" class="btn btn-custom ms-lg-4 mt-3 mt-lg-0 rounded-0 px-4">
@@ -444,6 +465,42 @@
                 <i class="bi bi-scissors display-4" style="color: var(--accent);"></i>
                 <h5 class="fw-bold mt-3">Alfaiataria Própria</h5>
                 <p class="text-muted small">Ajustes inclusos e realizados por profissionais experientes para um caimento impecável e conforto absoluto.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="testemunhos" class="py-5" style="background-color: #f8f8f8;">
+    <div class="container py-5">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h2 class="display-5 section-title mb-3">Quem Veste Fads</h2>
+            <p class="text-muted lead">A satisfação de nossos clientes é a nossa maior vitrine.</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="testimonial-card">
+                    <i class="bi bi-quote"></i>
+                    <p class="mb-4 text-muted fst-italic">"O terno do meu casamento estava impecável. O ajuste foi perfeito e a consultoria de cores nos ajudou muito. Profissionalismo de ponta!"</p>
+                    <h6 class="fw-bold mb-0" style="color: var(--primary);">Marcos R.</h6>
+                    <small class="text-muted">Noivo</small>
+                </div>
+            </div>
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="testimonial-card">
+                    <i class="bi bi-quote"></i>
+                    <p class="mb-4 text-muted fst-italic">"O vestido era deslumbrante! Me senti a rainha da festa. A qualidade dos tecidos da Fads realmente se destaca. Recomendo de olhos fechados."</p>
+                    <h6 class="fw-bold mb-0" style="color: var(--primary);">Juliana S.</h6>
+                    <small class="text-muted">Madrinha</small>
+                </div>
+            </div>
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="testimonial-card">
+                    <i class="bi bi-quote"></i>
+                    <p class="mb-4 text-muted fst-italic">"Atendimento excelente! Desde a escolha até o ajuste final, tudo foi feito com muito carinho e atenção aos detalhes. O melhor de Leme e região."</p>
+                    <h6 class="fw-bold mb-0" style="color: var(--primary);">Lúcia F.</h6>
+                    <small class="text-muted">Formanda</small>
+                </div>
             </div>
         </div>
     </div>
@@ -594,7 +651,8 @@
 
           <div class="mt-4 pt-4 border-top">
             <h5 class="fw-bold small text-uppercase" style="color: var(--accent); letter-spacing: 1px;">Contato Direto</h5>
-            <p class="mb-2"><i class="bi bi-telephone-fill me-2" style="color: var(--accent)"></i> Telefone/WhatsApp: (19) 9 7156-3938</p>
+            <p class="mb-2"><i class="bi bi-telephone-fill me-2" style="color: var(--accent)"></i> **Telefone/WhatsApp:** (19) 9 7156-3938</p>
+            <p class="mb-0"><i class="bi bi-envelope-fill me-2" style="color: var(--accent)"></i> **E-mail:** contato@fadstrajes.com.br</p>
           </div>
         </div>
 
@@ -637,7 +695,9 @@
         <ul class="list-unstyled">
           <li><a href="#sobre" class="footer-link d-block mb-1">Início / Sobre</a></li>
           <li><a href="#servicos" class="footer-link d-block mb-1">Nossos Serviços</a></li>
-          <li><a href="#diferenciais" class="footer-link d-block mb-1">Diferenciais</a></li> <li><a href="#galeria" class="footer-link d-block mb-1">Coleção</a></li>
+          <li><a href="#diferenciais" class="footer-link d-block mb-1">Diferenciais</a></li> 
+          <li><a href="#testemunhos" class="footer-link d-block mb-1">Testemunhos</a></li>
+          <li><a href="#galeria" class="footer-link d-block mb-1">Coleção</a></li>
           <li><a href="#contato" class="footer-link d-block mb-1">Agendar Visita</a></li>
         </ul>
       </div>
@@ -733,6 +793,11 @@
             galleryItems.forEach(item => {
                 // Verifica se o item possui a classe do filtro
                 if (item.classList.contains(filterValue)) {
+                    item.style.display = 'block';
+                }
+                
+                // Garante que o CTA apareça, já que ele tem as três classes de filtro
+                if (item === ctaItem) {
                     item.style.display = 'block';
                 }
             });
