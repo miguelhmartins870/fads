@@ -195,6 +195,7 @@
       object-fit: cover;
       transition: transform 0.5s ease;
       filter: brightness(0.95);
+      display: block;
     }
 
     .gallery-item {
@@ -248,7 +249,6 @@
       background: #fff;
       box-shadow: 0 20px 50px rgba(0,0,0,0.08);
       border-radius: 10px;
-      overflow: hidden;
     }
 
     .form-control {
@@ -322,6 +322,74 @@
     .whatsapp-float:hover {
         transform: scale(1.1);
         color: white;
+    }
+
+    /* NOVO: Botão Flutuante Favoritos */
+    .fav-float {
+        position: fixed;
+        bottom: 100px;
+        right: 25px;
+        z-index: 1060;
+        background-color: #fff;
+        color: var(--primary);
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        text-align: center;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.35rem;
+        border: 2px solid rgba(0,0,0,0.06);
+    }
+
+    .fav-float .badge {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.65rem;
+      padding: 4px 6px;
+      border-radius: 999px;
+      border: 2px solid #fff;
+    }
+
+    .fav-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 5;
+      background: rgba(255,255,255,0.95);
+      border: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      cursor: pointer;
+      transition: transform 0.15s, background 0.15s;
+    }
+
+    .fav-btn i {
+      color: #777;
+      font-size: 1.15rem;
+      transition: color 0.15s, transform 0.15s;
+    }
+    .fav-btn:hover { transform: scale(1.03); }
+    .fav-btn.favorited { background: var(--accent); }
+    .fav-btn.favorited i { color: #fff; transform: scale(1.05); }
+
+    /* Modal imagem miniatura */
+    .fav-thumb {
+      width: 72px;
+      height: 72px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 1px solid #eee;
     }
 
   </style>
@@ -651,8 +719,8 @@
 
           <div class="mt-4 pt-4 border-top">
             <h5 class="fw-bold small text-uppercase" style="color: var(--accent); letter-spacing: 1px;">Contato Direto</h5>
-            <p class="mb-2"><i class="bi bi-telephone-fill me-2" style="color: var(--accent)"></i> **Telefone/WhatsApp:** (19) 9 7156-3938</p>
-            <p class="mb-0"><i class="bi bi-envelope-fill me-2" style="color: var(--accent)"></i> **E-mail:** contato@fadstrajes.com.br</p>
+            <p class="mb-2"><i class="bi bi-telephone-fill me-2" style="color: var(--accent)"></i> Telefone/WhatsApp: (19) 9 7156-3938</p>
+            <p class="mb-0"><i class="bi bi-envelope-fill me-2" style="color: var(--accent)"></i> E-mail: contato@fadstrajes.com.br</p>
           </div>
         </div>
 
@@ -709,12 +777,45 @@
   </div>
 </footer>
 
-<a href="https://wa.me/5519971563938" target="_blank" class="whatsapp-float">
+<!-- Botões flutuantes -->
+<a href="https://wa.me/5519971563938" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
     <i class="bi bi-whatsapp"></i>
 </a>
+
+<button class="fav-float" id="openFavsBtn" title="Meus favoritos" aria-label="Meus favoritos">
+  <i class="bi bi-heart-fill"></i>
+  <span class="badge" id="favCountBadge" style="display:none;">0</span>
+</button>
+
+<!-- Modal Favoritos -->
+<div class="modal fade" id="favsModal" tabindex="-1" aria-labelledby="favsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold" id="favsModalLabel">Seus Favoritos</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+      <div class="modal-body">
+        <div id="favsList" class="d-flex flex-column gap-3">
+          <!-- itens gerados via JS -->
+        </div>
+        <div id="emptyFavs" class="text-center text-muted py-4" style="display:none;">
+          Nenhum favorito ainda. Clique no <i class="bi bi-heart"></i> nas fotos para adicionar.
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="clearFavsBtn" type="button" class="btn btn-outline-secondary">Limpar favoritos</button>
+        <button id="sendFavsBtn" type="button" class="btn btn-custom">Enviar favoritos no WhatsApp <i class="bi bi-whatsapp ms-2"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
+  AOS.init({ once: true, disableMutationObserver: true });
+
   // Inicializa animações
   AOS.init({
     once: true,
@@ -722,7 +823,7 @@
     duration: 1000, // Aumenta a duração para um efeito mais suave
   });
 
-  // Lógica de Filtragem da Galeria
+  // ---------- Galeria & Filtros (mantive sua lógica com ajuste pequeno) ----------
   document.addEventListener('DOMContentLoaded', function() {
     const filterButtons = document.querySelectorAll('.btn-group button');
     const galleryItems = document.querySelectorAll('.filter-item'); 
@@ -736,20 +837,25 @@
         return array;
     }
 
-    // Separa os itens de imagem (primeiros 17) do item CTA (o último)
-    // O último item (índice 17) é o CTA.
-    const imageItems = Array.from(galleryItems).slice(0, galleryItems.length - 1);
-    const ctaItem = galleryItems[galleryItems.length - 1];
+    // Separa os itens de imagem (todos exceto o CTA; mas não assume index fixo)
+    const itemsArray = Array.from(galleryItems);
+    let ctaItem = null;
+    // detectar item CTA (aquele com .bg-dark e botão)
+    for (const it of itemsArray) {
+      if (it.querySelector('.btn-custom')) { ctaItem = it; break; }
+    }
+
+    const imageItems = itemsArray.filter(it => it !== ctaItem);
 
     // 2. Função para aplicar o filtro "Todos" (Mostrar 6 aleatórios + CTA)
     function showRandomSix() {
         // Esconde todos os itens primeiro
-        galleryItems.forEach(item => {
+        itemsArray.forEach(item => {
             item.style.display = 'none';
         });
 
         // Seleciona 6 itens aleatórios das imagens
-        const randomItems = shuffle(imageItems).slice(0, 6);
+        const randomItems = shuffle(imageItems.slice()).slice(0, 6);
         
         // Mostra as 6 imagens aleatórias
         randomItems.forEach(item => {
@@ -765,8 +871,6 @@
     // Inicialização: Aplica o filtro "Todos" para mostrar 6 aleatórios ao carregar
     showRandomSix();
     
-    // O botão 'Todos' deve estar ativo na inicialização (Já está no HTML)
-
     filterButtons.forEach(button => {
       button.addEventListener('click', function() {
         // 1. Marcar o botão ativo
@@ -785,18 +889,18 @@
             // Lógica normal de filtro (mostra todos os itens da categoria)
             
             // Esconde todos os itens primeiro
-            galleryItems.forEach(item => {
+            itemsArray.forEach(item => {
                 item.style.display = 'none';
             });
 
             // Mostra apenas os itens da categoria selecionada (incluindo o CTA se ele tiver a classe)
-            galleryItems.forEach(item => {
+            itemsArray.forEach(item => {
                 // Verifica se o item possui a classe do filtro
                 if (item.classList.contains(filterValue)) {
                     item.style.display = 'block';
                 }
                 
-                // Garante que o CTA apareça, já que ele tem as três classes de filtro
+                // Garante que o CTA apareça, já que ele possivelmente tem as três classes de filtro
                 if (item === ctaItem) {
                     item.style.display = 'block';
                 }
@@ -804,9 +908,185 @@
         }
       });
     });
-  });
 
-  // Lógica do WhatsApp
+    // ---------- NOVO: Sistema de Favoritos (Overlay nos itens da galeria) ----------
+    const favKey = 'fads_favorites_v1';
+    let favorites = JSON.parse(localStorage.getItem(favKey) || '[]'); // array de {src, alt}
+
+    function saveFavs() {
+      localStorage.setItem(favKey, JSON.stringify(favorites));
+      updateFavBadge();
+    }
+
+    function isFavorited(src) {
+      return favorites.some(f => f.src === src);
+    }
+
+    function addFavorite(obj) {
+      if (!isFavorited(obj.src)) {
+        favorites.push(obj);
+        saveFavs();
+      }
+    }
+
+    function removeFavorite(src) {
+      favorites = favorites.filter(f => f.src !== src);
+      saveFavs();
+    }
+
+    // cria overlay de favorite para cada gallery-item que contenha .gallery-img
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      const img = item.querySelector('.gallery-img');
+      if (!img) return;
+
+      // botão de favorito
+      const btn = document.createElement('button');
+      btn.className = 'fav-btn';
+      btn.setAttribute('type','button');
+      btn.setAttribute('aria-label','Adicionar aos favoritos');
+      btn.innerHTML = '<i class="bi bi-heart"></i>';
+
+      // clicando no botão -> toggle
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const src = img.src;
+        const alt = img.alt || '';
+        if (isFavorited(src)) {
+          removeFavorite(src);
+          btn.classList.remove('favorited');
+          btn.innerHTML = '<i class="bi bi-heart"></i>';
+        } else {
+          addFavorite({ src, alt });
+          btn.classList.add('favorited');
+          btn.innerHTML = '<i class="bi bi-heart-fill"></i>';
+        }
+        renderFavsList(); // atualiza modal caso esteja aberto
+      });
+
+      // estado inicial
+      if (isFavorited(img.src)) {
+        btn.classList.add('favorited');
+        btn.innerHTML = '<i class="bi bi-heart-fill"></i>';
+      }
+
+      // append no container
+      item.style.position = 'relative';
+      item.appendChild(btn);
+    });
+
+    // ---------- Modal & Botão flutuante ----------
+    const favCountBadge = document.getElementById('favCountBadge');
+    const openFavsBtn = document.getElementById('openFavsBtn');
+    const favsModal = new bootstrap.Modal(document.getElementById('favsModal'));
+    const favsListEl = document.getElementById('favsList');
+    const emptyFavs = document.getElementById('emptyFavs');
+    const clearFavsBtn = document.getElementById('clearFavsBtn');
+    const sendFavsBtn = document.getElementById('sendFavsBtn');
+
+    function updateFavBadge() {
+      const n = favorites.length;
+      if (n > 0) {
+        favCountBadge.style.display = 'inline-block';
+        favCountBadge.textContent = n;
+      } else {
+        favCountBadge.style.display = 'none';
+      }
+    }
+
+    function renderFavsList() {
+      favsListEl.innerHTML = '';
+      if (favorites.length === 0) {
+        emptyFavs.style.display = 'block';
+        favsListEl.style.display = 'none';
+      } else {
+        emptyFavs.style.display = 'none';
+        favsListEl.style.display = 'flex';
+        favorites.forEach(f => {
+          const row = document.createElement('div');
+          row.className = 'd-flex align-items-center justify-content-between gap-3';
+
+          const left = document.createElement('div');
+          left.className = 'd-flex align-items-center gap-3';
+
+          const img = document.createElement('img');
+          img.src = f.src;
+          img.alt = f.alt || '';
+          img.className = 'fav-thumb';
+
+          const meta = document.createElement('div');
+          meta.innerHTML = `<div class="fw-bold small">${f.alt || 'Modelo'}</div><div class="text-muted small">Imagem</div>`;
+
+          left.appendChild(img);
+          left.appendChild(meta);
+
+          const actions = document.createElement('div');
+          actions.innerHTML = `<button class="btn btn-outline-danger btn-sm me-2 remove-fav-btn">Remover</button>`;
+
+          const removeBtn = actions.querySelector('.remove-fav-btn');
+          removeBtn.addEventListener('click', () => {
+            removeFavorite(f.src);
+            // atualizar botões na galeria
+            document.querySelectorAll('.gallery-img').forEach(imgEl => {
+              if (imgEl.src === f.src) {
+                const parent = imgEl.closest('.gallery-item');
+                if (parent) {
+                  const b = parent.querySelector('.fav-btn');
+                  if (b) { b.classList.remove('favorited'); b.innerHTML = '<i class="bi bi-heart"></i>'; }
+                }
+              }
+            });
+            renderFavsList();
+          });
+
+          row.appendChild(left);
+          row.appendChild(actions);
+          favsListEl.appendChild(row);
+        });
+      }
+      updateFavBadge();
+    }
+
+    // abrir modal ao clicar no botão flutuante
+    openFavsBtn.addEventListener('click', () => {
+      renderFavsList();
+      favsModal.show();
+    });
+
+    clearFavsBtn.addEventListener('click', () => {
+      if (!confirm('Remover todos os favoritos?')) return;
+      favorites = [];
+      saveFavs();
+      // resetar botões da galeria
+      document.querySelectorAll('.fav-btn').forEach(b => { b.classList.remove('favorited'); b.innerHTML = '<i class="bi bi-heart"></i>'; });
+      renderFavsList();
+    });
+
+    sendFavsBtn.addEventListener('click', () => {
+      if (favorites.length === 0) {
+        alert('Você não tem favoritos selecionados.');
+        return;
+      }
+      // compor mensagem: nome + lista com alt/texto + links das imagens
+      let texto = '*Olá! Gostaria de agendar prova para os seguintes modelos da Fads Trajes Finos:*%0A%0A';
+      favorites.forEach((f, idx) => {
+        const nome = f.alt || `Modelo ${idx+1}`;
+        texto += `${idx+1}. ${nome}%0A${f.src}%0A%0A`;
+      });
+      texto += '*Por favor me retorno com disponibilidade para prova. Obrigado(a)!*';
+      const encoded = encodeURIComponent(texto);
+      const waUrl = `https://wa.me/5519971563938?text=${encoded}`;
+
+      // abre no WhatsApp em nova aba
+      window.open(waUrl, '_blank');
+    });
+
+    // inicializa badge e estado
+    updateFavBadge();
+    renderFavsList();
+
+  }); // fim DOMContentLoaded para galeria
+
+  // ---------- Manipulação formulário contato para WhatsApp ----------
   function handleSubmit(e) {
     e.preventDefault();
     const f = e.target;
@@ -826,6 +1106,10 @@
       this.classList.add('active');
     });
   });
+  window.addEventListener("load", () => {
+  AOS.refreshHard();
+});
+
 </script>
 </body>
 </html>
