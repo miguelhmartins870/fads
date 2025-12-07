@@ -403,7 +403,180 @@
   .chat-msg.bot{ align-self:flex-start; background:#fff; color:#333; border:1px solid #eee; }
   .chat-suggestion{ font-size:.85rem; color:var(--primary); background:transparent; border:none; text-decoration:underline; cursor:pointer; padding:3px 6px; }
 
+ /* PRELOADER PREMIUM 2.0 */
+#preloader {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #ffffff, #f8f6f0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  transition: opacity .8s ease, visibility .8s ease;
+}
+
+#preloader.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.preloader-content {
+  text-align: center;
+  animation: preloaderFadeIn 1s ease forwards;
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+.preloader-logo {
+  width: 140px;
+  height: auto;
+  margin-bottom: 25px;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.08));
+  animation: logoFloat 3s ease-in-out infinite;
+}
+
+/* Spinner Premium Duplo */
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid rgba(0,0,0,0.08);
+  border-top-color: var(--accent);
+  border-right-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+  position: relative;
+}
+
+.spinner::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border: 3px solid transparent;
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: spinReverse 1.8s linear infinite;
+}
+
+/* Shine de luxo */
+.preloader-logo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.35) 50%, transparent 100%);
+  pointer-events: none;
+  animation: shine 2.8s infinite;
+}
+
+/* ======================== ANIMAÇÕES ======================== */
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spinReverse {
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes shine {
+  0%   { transform: translateX(-200%); }
+  100% { transform: translateX(200%); }
+}
+
+@keyframes preloaderFadeIn {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* 3D LUXURY HOVER – Para Cards Gerais */
+.card-3d,
+.service-card,
+.testimonial-card,
+#diferenciais .col-md-4 {
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  transform-style: preserve-3d;
+}
+
+.card-3d:hover,
+.service-card:hover,
+.testimonial-card:hover,
+#diferenciais .col-md-4:hover {
+  transform: translateY(-10px) rotateX(6deg) rotateY(-4deg);
+  box-shadow: 0 18px 35px rgba(0,0,0,0.18);
+  border-color: var(--accent) !important;
+}
+
+/* Borda dourada leve ao passar mouse */
+.service-card:hover,
+.testimonial-card:hover,
+#diferenciais .col-md-4:hover {
+  border-left: 3px solid var(--accent) !important;
+}
+
+/* Brilho dinâmico no hover */
+.card-3d::after,
+.service-card::after,
+.testimonial-card::after,
+#diferenciais .col-md-4::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.15), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.card-3d:hover::after,
+.service-card:hover::after,
+.testimonial-card:hover::after,
+#diferenciais .col-md-4:hover::after {
+  opacity: 1;
+}
+
+/* PARALLAX PREMIUM NO HERO */
+.hero-section {
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-parallax {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  transform: translateY(0px);
+  transition: transform 0.1s linear;
+  filter: brightness(0.92);
+}
+
+/* Camada de brilho suave */
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 40%);
+  z-index: -1;
+}
+
+
+
   </style>
+
 </head>
 <body>
 
@@ -436,7 +609,10 @@
 <section id="sobre" class="hero-section d-flex align-items-center">
   <div class="container">
     <div class="row align-items-center gy-5">
-      
+      <div class="hero-parallax" style="
+  background-image: url('https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=1600&auto=format&fit=crop');
+"></div>
+
       <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
         <span class="text-uppercase fw-bold ls-2 mb-3 d-block small" style="color: var(--accent); letter-spacing: 2px;">Onde a Elegância Acontece</span>
         <h1 class="hero-title mb-4">Elegância que marca sua história.</h1>
@@ -839,6 +1015,14 @@
   <button id="openChatBtn" class="chat-button" aria-label="Abrir chat">
     <i class="bi bi-chat-dots-fill fs-3"></i>
   </button>
+</div>
+
+<!-- PRELOADER -->
+<div id="preloader">
+  <div class="preloader-content">
+    <img src="logo.jpg" alt="Fads Trajes Finos" class="preloader-logo">
+    <div class="spinner"></div>
+  </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -1322,6 +1506,22 @@ Se quiser, também posso abrir o WhatsApp para atendimento humano.`;
   }, 700);
 })();
 
+// PRELOADER REMOVE
+window.addEventListener("load", () => {
+  const pre = document.getElementById("preloader");
+  setTimeout(() => {
+    pre.classList.add("fade-out");
+  }, 300); // leve delay para elegância
+});
+
+// PARALLAX DO HERO – Movimento suave
+window.addEventListener("scroll", () => {
+  const sc = window.scrollY;
+  const parallax = document.querySelector(".hero-parallax");
+  if (parallax) {
+    parallax.style.transform = `translateY(${sc * 0.25}px)`;
+  }
+});
 
 </script>
 </body>
