@@ -3,27 +3,30 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Aluguel de trajes finos em Leme-SP. Vestidos de festa, ternos e smokings.">
+  <meta name="description" content="Aluguel de trajes finos em Leme-SP. Vestidos de festa, ternos, smokings e ajustes inclusos. Elegância e caimento perfeito para seu evento." />
   
   <link rel="icon" type="image/jpg" href="logo.jpg">
   
-  <title>Fads Trajes Finos | Elegância em Leme - SP</title>
+  <title>Fads Trajes Finos | Aluguel de Vestidos e Ternos de Luxo em Leme - SP</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
   <style>
+
     :root {
-      --primary: #1a1a1a;    /* Preto Suave */
-      --accent: #d4af37;     /* Dourado da sua Logo */
-      --bg-light: #f8f9fa;
-      --text-muted: #666;
-    }
+  --primary: #181818;      /* Preto Intenso */
+  --accent: #b8860b;       /* Dourado Sutil (DarkGoldenrod) */
+  --bg-light: #fefefe;     /* Quase branco */
+  --text-muted: #666;
+  --bg-header: rgba(0, 0, 0, 0.9);
+}
+
 
     body {
       background-color: var(--bg-light);
@@ -35,35 +38,49 @@
     /* Tipografia de Luxo */
     h1, h2, h3, h4, h5 {
       font-family: 'Playfair Display', serif;
+      font-weight: 700;
     }
 
-    /* Navbar Ajustada para a Logo Preta */
+    /* Títulos com Sutil Sombra Dourada */
+    .section-title {
+      position: relative;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      width: 50px;
+      height: 2px;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--accent);
+    }
+    
+    /* Navbar Aprimorada */
     .navbar {
-      background: rgba(0, 0, 0, 0.95); /* Fundo preto para fundir com a logo */
-      backdrop-filter: blur(10px);
-      transition: all 0.3s ease;
-      padding: 10px 0;
-      border-bottom: 1px solid #333;
+      background: var(--bg-header); /* Fundo preto semitransparente */
+      backdrop-filter: blur(8px);
+      transition: all 0.4s ease;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Linha sutil */
     }
     
     .navbar-logo {
-      height: 65px; /* Tamanho ajustado da logo */
+      height: 60px; /* Tamanho ajustado da logo */
       width: auto;
-      transition: transform 0.3s;
-    }
-
-    .navbar-logo:hover {
-      transform: scale(1.05);
+      border-radius: 4px; /* Suavizar o corte da imagem */
     }
 
     .nav-link {
-      color: #ffffff !important; /* Texto branco */
+      color: #e9e9e9 !important; /* Texto branco-suave */
       font-weight: 400;
       text-transform: uppercase;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       letter-spacing: 1.5px;
       position: relative;
-      margin: 0 10px;
+      margin: 0 12px;
     }
 
     .nav-link::after {
@@ -71,185 +88,222 @@
       position: absolute;
       width: 0;
       height: 1px;
-      bottom: 0;
+      bottom: -5px;
       left: 0;
       background-color: var(--accent);
       transition: width 0.3s;
     }
 
-    .nav-link:hover {
+    .nav-link:hover, .nav-link.active {
       color: var(--accent) !important;
     }
 
-    .nav-link:hover::after {
+    .nav-link:hover::after, .nav-link.active::after {
       width: 100%;
     }
 
-    /* Hero Section */
+    /* Hero Section - Fundo Elegante */
     .hero-section {
-      padding: 140px 0 80px; /* Aumentado padding superior por causa da navbar */
-      background: linear-gradient(to right, #ffffff 50%, #fdfcf5 50%);
+      padding: 140px 0 80px; 
+      background: linear-gradient(135deg, #ffffff 50%, #fcfbf8 50%); /* Transição de cor suave */
       position: relative;
     }
 
     @media (max-width: 991px) {
       .hero-section { background: #fff; padding-top: 120px; }
-      .navbar-collapse {
-        background: #000;
-        padding: 20px;
-        border-radius: 0 0 15px 15px;
-      }
     }
 
     .hero-title {
-      font-size: 3.5rem;
-      line-height: 1.2;
+      font-size: 4rem;
+      line-height: 1.1;
       color: var(--primary);
     }
     
     .hero-subtitle {
       font-weight: 300;
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       color: var(--text-muted);
     }
 
     /* Botões Personalizados */
     .btn-custom {
-      background-color: var(--primary);
-      color: #fff;
-      border-radius: 0;
+      background-color: var(--accent);
+      color: var(--primary); /* Texto escuro no dourado */
+      border-radius: 2px;
       padding: 12px 30px;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      font-size: 0.9rem;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+      font-size: 0.85rem;
       transition: all 0.3s;
-      border: 1px solid var(--primary);
+      border: 1px solid var(--accent);
     }
 
     .btn-custom:hover {
-      background-color: var(--accent);
-      border-color: var(--accent);
-      color: #fff;
+      background-color: var(--primary);
+      border-color: var(--primary);
+      color: var(--accent);
       transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     }
 
     .btn-outline-custom {
       background: transparent;
       color: var(--primary);
       border: 1px solid var(--primary);
-      border-radius: 0;
+      border-radius: 2px;
       padding: 12px 30px;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      font-size: 0.9rem;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+      font-size: 0.85rem;
       transition: all 0.3s;
     }
 
     .btn-outline-custom:hover {
       background: var(--primary);
-      color: #fff;
+      color: var(--bg-light);
     }
 
-    /* Cards e Serviços */
+    /* Cards de Serviço com Efeito Elevado */
     .service-card {
       border: none;
       background: #fff;
-      padding: 2rem;
-      transition: all 0.3s ease;
+      padding: 2.5rem 2rem;
+      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
       height: 100%;
-      border-bottom: 3px solid transparent;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+      border-left: 3px solid transparent;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
 
     .service-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.08);
-      border-bottom: 3px solid var(--accent);
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+      border-left: 3px solid var(--accent);
     }
 
     .icon-box {
-      font-size: 2.5rem;
+      font-size: 3rem;
       color: var(--accent);
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
     }
 
-    /* Galeria */
+    /* Galeria com Overlay */
     .gallery-img {
       width: 100%;
-      height: 350px;
+      height: 380px;
       object-fit: cover;
       transition: transform 0.5s ease;
-      filter: grayscale(20%);
+      filter: brightness(0.95);
     }
 
     .gallery-item {
       overflow: hidden;
       border-radius: 4px;
+      position: relative;
+    }
+
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.1);
+      transition: background 0.3s;
+    }
+
+    .gallery-item:hover::after {
+      background: rgba(0, 0, 0, 0);
     }
 
     .gallery-item:hover .gallery-img {
-      transform: scale(1.1);
-      filter: grayscale(0%);
+      transform: scale(1.05);
+      filter: brightness(1);
     }
 
     /* Contato & Mapa */
     .contact-wrapper {
       background: #fff;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-      border-radius: 8px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+      border-radius: 10px;
       overflow: hidden;
     }
 
     .form-control {
       border-radius: 0;
-      border: 1px solid #ddd;
-      padding: 12px;
+      border: 1px solid #e0e0e0;
+      padding: 14px;
+      font-size: 0.95rem;
+      transition: border-color 0.3s;
     }
 
     .form-control:focus {
-      box-shadow: none;
+      box-shadow: 0 0 0 0.1rem rgba(184, 134, 11, 0.3); /* Sombra suave no dourado */
       border-color: var(--accent);
     }
 
     footer {
-      background: #111; /* Preto profundo */
+      background: var(--primary); /* Preto profundo */
       color: #fff;
       padding: 60px 0 30px;
-      border-top: 3px solid var(--accent);
+      border-top: 5px solid var(--accent);
     }
 
     .footer-link {
-      color: #aaa;
+      color: #ccc;
       text-decoration: none;
       transition: 0.3s;
+      font-size: 0.9rem;
     }
     
-    .footer-link:hover { color: var(--accent); }
+    .footer-link:hover { 
+      color: var(--accent); 
+      padding-left: 5px;
+    }
+    .footer-logo {
+      filter: invert(1); /* Inverte a logo preta para branca no footer */
+    }
+    .social-icon {
+      color: #ccc;
+      transition: 0.3s;
+    }
+    .social-icon:hover {
+      color: var(--accent) !important;
+      transform: scale(1.1);
+    }
+
+    /* Card de localização no Hero */
+    .hero-location-card {
+      max-width: 320px; 
+      background: rgba(255,255,255,0.95);
+      border-left: 3px solid var(--accent);
+    }
 
   </style>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-sm">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
   <div class="container">
     <a class="navbar-brand d-flex align-items-center gap-2" href="#">
-      <img src="logo.jpg" alt="Fads Trajes Finos Logo" class="navbar-logo rounded">
+      <img src="logo.jpg" alt="Fads Trajes Finos Logo" class="navbar-logo">
     </a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div id="navMenu" class="collapse navbar-collapse">
       <ul class="navbar-nav ms-auto align-items-center">
-        <li class="nav-item"><a class="nav-link" href="#sobre">Início</a></li>
+        <li class="nav-item"><a class="nav-link active" href="#sobre">Início</a></li>
         <li class="nav-item"><a class="nav-link" href="#servicos">Serviços</a></li>
         <li class="nav-item"><a class="nav-link" href="#galeria">Coleção</a></li>
         <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
       </ul>
-      <a href="https://wa.me/5519971563938" target="_blank" class="btn btn-outline-light ms-lg-4 mt-3 mt-lg-0 rounded-0 px-4" style="border-color: var(--accent); color: var(--accent);">
-        <i class="bi bi-whatsapp me-1"></i> AGENDAR
+      <a href="https://wa.me/5519971563938" target="_blank" class="btn btn-custom ms-lg-4 mt-3 mt-lg-0 rounded-0 px-4">
+        <i class="bi bi-whatsapp me-1"></i> AGENDAR VISITA
       </a>
     </div>
   </div>
@@ -260,26 +314,26 @@
     <div class="row align-items-center gy-5">
       
       <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
-        <span class="text-uppercase fw-bold ls-2 mb-2 d-block small" style="color: var(--accent)">Leme - São Paulo</span>
-        <h1 class="hero-title fw-bold mb-4">Elegância que marca sua história.</h1>
+        <span class="text-uppercase fw-bold ls-2 mb-3 d-block small" style="color: var(--accent); letter-spacing: 2px;">Onde a Elegância Acontece</span>
+        <h1 class="hero-title mb-4">Elegância que marca sua história.</h1>
         <p class="hero-subtitle mb-5">
           Especialistas em aluguel de vestidos para madrinhas, noivas, formandas e trajes masculinos completos. 
-          O ajuste perfeito para o seu grande dia.
+          Oferecemos o **ajuste perfeito** e a consultoria ideal para o seu grande dia.
         </p>
 
         <div class="d-flex gap-3 flex-wrap">
-          <a href="#galeria" class="btn btn-custom">Ver Coleção</a>
-          <a href="#contato" class="btn btn-outline-custom">Falar Conosco</a>
+          <a href="https://wa.me/5519971563938" target="_blank" class="btn btn-custom">Agendar Consultoria</a>
+          <a href="#galeria" class="btn btn-outline-custom">Explorar Coleção</a>
         </div>
         
-        <div class="mt-5 d-flex gap-4 text-muted">
+        <div class="mt-5 d-flex gap-4 text-muted pt-3 border-top border-light-subtle">
           <div class="d-flex align-items-center gap-2">
-            <i class="bi bi-scissors fs-4" style="color: var(--accent)"></i>
-            <small>Ajustes Inclusos</small>
+            <i class="bi bi-check-circle-fill fs-5" style="color: var(--accent)"></i>
+            <small class="fw-bold text-uppercase">Ajustes Inclusos</small>
           </div>
           <div class="d-flex align-items-center gap-2">
-            <i class="bi bi-star fs-4" style="color: var(--accent)"></i>
-            <small>Atendimento Exclusivo</small>
+            <i class="bi bi-check-circle-fill fs-5" style="color: var(--accent)"></i>
+            <small class="fw-bold text-uppercase">Consultoria de Estilo</small>
           </div>
         </div>
       </div>
@@ -287,18 +341,18 @@
       <div class="col-lg-6 position-relative" data-aos="fade-left" data-aos-duration="1000">
         <div class="position-relative">
             <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=1000&auto=format&fit=crop" 
-                 class="img-fluid rounded-1 shadow-lg w-100" 
-                 style="max-height: 600px; object-fit: cover;" 
-                 alt="Vestido de Gala">
+                  class="img-fluid rounded-1 shadow-lg w-100" 
+                  style="max-height: 600px; object-fit: cover;" 
+                  alt="Vestido de Gala">
             
-            <div class="card position-absolute bottom-0 start-0 m-4 p-3 border-0 shadow" style="max-width: 280px; background: rgba(255,255,255,0.9);">
+            <div class="card position-absolute bottom-0 start-0 m-4 p-3 border-0 shadow-lg hero-location-card">
                 <div class="d-flex align-items-center gap-3">
-                    <div class="bg-black text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
-                        <i class="bi bi-geo-alt-fill text-warning"></i>
+                    <div class="bg-dark text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 55px; height: 55px; border: 2px solid var(--accent);">
+                        <i class="bi bi-geo-alt-fill text-white fs-4"></i>
                     </div>
                     <div>
-                        <small class="text-muted d-block text-uppercase" style="font-size: 0.7rem;">Localização</small>
-                        <span class="fw-bold" style="font-size: 0.9rem;">Rua XV de Novembro, 182<br>Centro, Leme - SP</span>
+                        <small class="text-muted d-block text-uppercase" style="font-size: 0.7rem; letter-spacing: 1px;">Visite-nos</small>
+                        <span class="fw-bold" style="font-size: 0.95rem;">Rua XV de Novembro, 182<br>Centro, Leme - SP</span>
                     </div>
                 </div>
             </div>
@@ -309,11 +363,11 @@
   </div>
 </section>
 
-<section id="servicos" class="py-5 bg-white">
+<section id="servicos" class="py-5" style="background-color: #f8f8f8;">
   <div class="container py-5">
     <div class="text-center mb-5" data-aos="fade-up">
-      <h2 class="display-5 fw-bold mb-3">Nossos Serviços</h2>
-      <div class="mx-auto" style="width: 60px; height: 3px; background: var(--accent);"></div>
+      <h2 class="display-5 section-title mb-3">O Seu Brilho é o Nosso Foco</h2>
+      <p class="text-muted lead">Nossos serviços foram pensados para garantir que seu traje seja a representação perfeita do seu estilo.</p>
     </div>
 
     <div class="row g-4">
@@ -321,110 +375,120 @@
         <div class="service-card text-center">
           <div class="icon-box"><i class="bi bi-person-standing-dress"></i></div>
           <h4 class="mb-3">Trajes Femininos</h4>
-          <p class="text-muted">Vestidos deslumbrantes para madrinhas, formandas e debutantes. Modelos clássicos e tendências atuais.</p>
+          <p class="text-muted">Vestidos deslumbrantes para todas as ocasiões: madrinhas, noivas, formandas e debutantes. Modelos que unem elegância e as últimas tendências.</p>
         </div>
       </div>
       <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
         <div class="service-card text-center">
           <div class="icon-box"><i class="bi bi-suit-club"></i></div>
           <h4 class="mb-3">Trajes Masculinos</h4>
-          <p class="text-muted">Ternos Slim, Smokings e trajes para noivos e padrinhos. Elegância e corte impecável.</p>
+          <p class="text-muted">Do terno Slim ao sofisticado Smoking, oferecemos opções para noivos, padrinhos e convidados. Garanta um corte impecável e moderno.</p>
         </div>
       </div>
       <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
         <div class="service-card text-center">
           <div class="icon-box"><i class="bi bi-magic"></i></div>
-          <h4 class="mb-3">Ajustes & Consultoria</h4>
-          <p class="text-muted">Prova com ajuste personalizado para o caimento perfeito. Consultoria de estilo inclusa.</p>
+          <h4 class="mb-3">Ajuste Personalizado</h4>
+          <p class="text-muted">Toda a nossa experiência em alfaiataria à sua disposição. Prova e ajuste na medida exata para um caimento perfeito e conforto absoluto.</p>
         </div>
       </div>
+    </div>
+    
+    <div class="text-center mt-5 pt-4" data-aos="fade-up" data-aos-delay="400">
+      <a href="https://wa.me/5519971563938" target="_blank" class="btn btn-custom btn-lg">Fale com um Consultor Exclusivo</a>
     </div>
   </div>
 </section>
 
-<section id="galeria" class="py-5 bg-light">
+<section id="galeria" class="py-5 bg-white">
   <div class="container py-5">
-    <div class="d-flex justify-content-between align-items-end mb-5">
+    <div class="d-flex justify-content-between align-items-end mb-5 border-bottom pb-3">
         <div>
-            <h2 class="display-5 fw-bold">Nossa Coleção</h2>
-            <p class="text-muted mb-0">Alguns dos modelos disponíveis na loja</p>
+            <h2 class="display-5 section-title mb-3">Nossa Coleção</h2>
+            <p class="text-muted mb-0 lead">Uma prévia da sofisticação que espera por você em nossa loja.</p>
         </div>
-        <a href="https://instagram.com/fadstrajes" target="_blank" class="btn btn-link text-dark text-decoration-none fw-bold">
-            Ver mais no Instagram <i class="bi bi-arrow-right"></i>
+        <a href="https://instagram.com/fadstrajes" target="_blank" class="btn btn-link text-dark text-decoration-none fw-bold" style="color: var(--accent) !important;">
+            Ver Coleção Completa <i class="bi bi-arrow-right-short fs-4 align-middle"></i>
         </a>
     </div>
 
-    <div class="row g-3">
-      <div class="col-md-4" data-aos="zoom-in">
-        <div class="gallery-item">
-            <img class="gallery-img" src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=600&auto=format&fit=crop" alt="Vestido 1">
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="zoom-in" data-aos-duration="800">
+        <div class="gallery-item shadow-sm">
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=600&auto=format&fit=crop" alt="Vestido de Noiva/Festa">
         </div>
       </div>
-      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
-        <div class="gallery-item">
-            <img class="gallery-img" src="https://images.unsplash.com/photo-1594938298603-c8148c47e356?w=600&auto=format&fit=crop" alt="Terno Masculino">
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="800">
+        <div class="gallery-item shadow-sm">
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1594938298603-c8148c47e356?w=600&auto=format&fit=crop" alt="Terno Masculino Clássico">
         </div>
       </div>
-      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
-        <div class="gallery-item">
-            <img class="gallery-img" src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=600&auto=format&fit=crop" alt="Vestido 2">
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="800">
+        <div class="gallery-item shadow-sm">
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=600&auto=format&fit=crop" alt="Vestido Longo de Festa">
         </div>
       </div>
-      <div class="col-md-4" data-aos="zoom-in">
-        <div class="gallery-item">
-            <img class="gallery-img" src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&auto=format&fit=crop" alt="Terno 2">
+      <div class="col-md-4" data-aos="zoom-in" data-aos-duration="800">
+        <div class="gallery-item shadow-sm">
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&auto=format&fit=crop" alt="Smoking">
         </div>
       </div>
-      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
-        <div class="gallery-item">
-            <img class="gallery-img" src="https://images.unsplash.com/photo-1585250003058-24363eb626c0?w=600&auto=format&fit=crop" alt="Vestido 3">
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="800">
+        <div class="gallery-item shadow-sm">
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1585250003058-24363eb626c0?w=600&auto=format&fit=crop" alt="Vestido de Madrinha">
         </div>
       </div>
-      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
-        <div class="gallery-item bg-black d-flex align-items-center justify-content-center text-white flex-column" style="height: 350px;">
-            <img src="logo.jpg" style="height: 50px; opacity: 0.8; margin-bottom: 20px;">
-            <h3 class="fw-bold h5">Visite a loja</h3>
-            <p class="text-secondary">Para ver o acervo completo</p>
-            <a href="#contato" class="btn btn-outline-light mt-2 rounded-0" style="border-color: var(--accent); color: var(--accent);">Agendar Visita</a>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="800">
+        <div class="gallery-item bg-dark d-flex align-items-center justify-content-center text-white flex-column" style="height: 380px;">
+            <i class="bi bi-stars display-4 mb-3" style="color: var(--accent)"></i>
+            <h3 class="fw-bold h5">Centenas de Opções</h3>
+            <p class="text-secondary">Seu traje ideal está te esperando.</p>
+            <a href="#contato" class="btn btn-custom mt-2">Agendar Prova</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="contato" class="py-5">
+<section id="contato" class="py-5" style="background-color: var(--bg-light);">
   <div class="container py-5">
     <div class="contact-wrapper">
       <div class="row g-0">
         
-        <div class="col-lg-6 p-5">
-          <h3 class="fw-bold mb-4">Entre em contato</h3>
-          <p class="text-muted mb-4">Preencha o formulário para ser direcionado ao nosso WhatsApp.</p>
+        <div class="col-lg-6 p-5" data-aos="fade-right">
+          <h3 class="fw-bold mb-4 section-title" style="padding-bottom: 5px;">Fale Conosco</h3>
+          <p class="text-muted mb-4">Preencha o formulário e inicie sua conversa exclusiva via **WhatsApp** para agendar sua prova ou tirar dúvidas.</p>
           
           <form id="contactForm" onsubmit="handleSubmit(event)">
             <div class="mb-3">
-              <label class="form-label small text-muted text-uppercase fw-bold">Nome</label>
-              <input name="nome" class="form-control" required>
+              <label class="form-label small text-muted text-uppercase fw-bold">Seu Nome</label>
+              <input name="nome" class="form-control" placeholder="Ex: Ana Silva" required>
             </div>
             <div class="mb-3">
-              <label class="form-label small text-muted text-uppercase fw-bold">Telefone</label>
-              <input name="telefone" class="form-control" required>
+              <label class="form-label small text-muted text-uppercase fw-bold">Seu Telefone</label>
+              <input name="telefone" class="form-control" type="tel" placeholder="(19) 99999-9999" required>
             </div>
             <div class="mb-4">
-              <label class="form-label small text-muted text-uppercase fw-bold">Mensagem</label>
-              <textarea name="mensagem" class="form-control" rows="4" placeholder="Ex: Gostaria de ver vestidos para madrinha..."></textarea>
+              <label class="form-label small text-muted text-uppercase fw-bold">Mensagem / Interesse</label>
+              <textarea name="mensagem" class="form-control" rows="3" placeholder="Gostaria de agendar uma prova de ternos..."></textarea>
             </div>
-            <button class="btn btn-custom w-100">Enviar Mensagem <i class="bi bi-whatsapp ms-2"></i></button>
+            <button class="btn btn-custom w-100 py-3">Iniciar Conversa no WhatsApp <i class="bi bi-whatsapp ms-2"></i></button>
           </form>
 
           <div class="mt-4 pt-4 border-top">
-            <p class="mb-2"><i class="bi bi-telephone-fill text-warning me-2"></i> (19) 9 7156-3938</p>
-            <p class="mb-0"><i class="bi bi-envelope-fill text-warning me-2"></i> contato@fadstrajes.com.br</p>
+            <h5 class="fw-bold small text-uppercase" style="color: var(--accent); letter-spacing: 1px;">Contato Direto</h5>
+            <p class="mb-2"><i class="bi bi-telephone-fill me-2" style="color: var(--accent)"></i> **Telefone/WhatsApp:** (19) 9 7156-3938</p>
+            <p class="mb-0"><i class="bi bi-envelope-fill me-2" style="color: var(--accent)"></i> **E-mail:** contato@fadstrajes.com.br</p>
           </div>
         </div>
 
-        <div class="col-lg-6">
-            <iframe src="https://www.google.com/maps?q=Fads+Trajes+Finos,Leme+SP&output=embed" style="border:0; width:100%; height:100%;" allowfullscreen loading="lazy"> </iframe>
+        <div class="col-lg-6" data-aos="fade-left">
+            <iframe src="https://www.google.com/maps?q=Fads+Trajes+Finos,Leme+SP&output=embed" style="border:0; width:100%; height:100%;" allowfullscreen loading="lazy">
+              style="border:0; width:100%; height:100%; min-height: 450px;" 
+              allowfullscreen 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
         </div>
 
       </div>
@@ -436,33 +500,35 @@
   <div class="container">
     <div class="row gy-4">
       <div class="col-lg-4">
-        <img src="logo.jpg" class="mb-3" style="height: 50px;">
-        <p class="text-secondary">Elegância e sofisticação para os momentos mais importantes da sua vida.</p>
+        <img src="logo.jpg" alt="Logo Fads" style="height: 50px; background-color: #fff; border-radius: 4px;">
+        <p class="text-secondary">Sua escolha de excelência em trajes finos. Elegância e sofisticação em Leme-SP.</p>
         <div class="d-flex gap-3 mt-3">
-          <a href="https://instagram.com/fadstrajes" target="_blank" class="text-light fs-5"><i class="bi bi-instagram"></i></a>
-          <a href="#" class="text-light fs-5"><i class="bi bi-facebook"></i></a>
-          <a href="https://wa.me/5519971563938" target="_blank" class="text-light fs-5"><i class="bi bi-whatsapp"></i></a>
+          <a href="https://instagram.com/fadstrajes" target="_blank" class="social-icon fs-5"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="social-icon fs-5"><i class="bi bi-facebook"></i></a>
+          <a href="https://wa.me/5519971563938" target="_blank" class="social-icon fs-5"><i class="bi bi-whatsapp"></i></a>
         </div>
       </div>
       <div class="col-lg-4">
-        <h5 class="fw-bold mb-3" style="color: var(--accent)">Horários</h5>
+        <h5 class="fw-bold mb-3 text-uppercase" style="color: var(--accent); letter-spacing: 1px;">Horários de Atendimento</h5>
         <ul class="list-unstyled text-secondary">
-          <li class="mb-2">Segunda a Sexta: 09h - 18h</li>
-          <li class="mb-2">Sábado: 09h - 13h</li>
-          <li>Domingo: Fechado</li>
+          <li class="mb-2"><i class="bi bi-clock-fill me-2" style="color: var(--accent); font-size: 0.8rem;"></i> Segunda a Sexta: 09h às 18h</li>
+          <li class="mb-2"><i class="bi bi-clock-fill me-2" style="color: var(--accent); font-size: 0.8rem;"></i> Sábado: 09h às 13h</li>
+          <li><i class="bi bi-slash-circle-fill me-2" style="color: var(--accent); font-size: 0.8rem;"></i> Domingo: Fechado</li>
         </ul>
       </div>
       <div class="col-lg-4">
-        <h5 class="fw-bold mb-3" style="color: var(--accent)">Links Rápidos</h5>
+        <h5 class="fw-bold mb-3 text-uppercase" style="color: var(--accent); letter-spacing: 1px;">Navegação</h5>
         <ul class="list-unstyled">
-          <li><a href="#sobre" class="footer-link">Sobre</a></li>
-          <li><a href="#galeria" class="footer-link">Galeria</a></li>
-          <li><a href="#contato" class="footer-link">Contato</a></li>
+          <li><a href="#sobre" class="footer-link d-block mb-1">Início / Sobre</a></li>
+          <li><a href="#servicos" class="footer-link d-block mb-1">Nossos Serviços</a></li>
+          <li><a href="#galeria" class="footer-link d-block mb-1">Coleção</a></li>
+          <li><a href="#contato" class="footer-link d-block mb-1">Agendar Visita</a></li>
         </ul>
       </div>
     </div>
     <div class="border-top border-secondary mt-5 pt-4 text-center text-secondary small">
-      © 2024 Fads Trajes Finos. Todos os direitos reservados.
+      <p class="mb-1">Fads Trajes Finos | CNPJ: 00.000.000/0001-00</p>
+      © 2024. Todos os direitos reservados.
     </div>
   </div>
 </footer>
@@ -473,21 +539,30 @@
   // Inicializa animações
   AOS.init({
     once: true,
-    offset: 100
+    offset: 100,
+    duration: 1000, // Aumenta a duração para um efeito mais suave
   });
 
   // Lógica do WhatsApp
   function handleSubmit(e) {
     e.preventDefault();
     const f = e.target;
-    const nome = f.nome.value;
-    const telefone = f.telefone.value;
-    const mensagem = f.mensagem.value;
+    const nome = f.nome.value || 'Nome não informado';
+    const telefone = f.telefone.value || 'Telefone não informado';
+    const mensagem = f.mensagem.value || 'Gostaria de saber mais sobre os trajes.';
 
-    const textoFormatado = `*Olá! Vim pelo site da Fads.*%0A%0A*Nome:* ${nome}%0A*Telefone:* ${telefone}%0A*Mensagem:* ${mensagem}`;
+    const textoFormatado = `*Olá! Vim pelo site da Fads Trajes Finos e gostaria de atendimento.*%0A%0A*Nome:* ${nome}%0A*Telefone:* ${telefone}%0A*Mensagem:* ${mensagem}`;
     
     window.open(`https://wa.me/5519971563938?text=${textoFormatado}`, '_blank');
   }
+
+  // Marcar link da nav como ativo
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
 </script>
 </body>
 </html>
